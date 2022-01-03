@@ -142,11 +142,11 @@ let Student = function(name, age, hometown) {
   this.hometown = hometown;
 };
 
-let joe = new Student('Joe', 'Schmoe', 100);
+let joe = new Student('Joe', 100, 'Schmo');
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
-// console.log(joe);
+//console.log(joe);
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
@@ -158,18 +158,16 @@ Student.prototype.greeting = function() {
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
 
-Student.courseName = function() {
-  return 'This student is enrolled in Code 301.';
-};
+Student.courseName = () => 'This student is enrolled in Code 301.';
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+//console.log(Student.courseName());
 
 
 
@@ -182,15 +180,19 @@ Student.prototype.scope = function() {
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(joe.scope());
 
+
+
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scopeArrow());
+console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//  The value of 'this' is the object of Joe created in the Student constructor function. 
+
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//  The "this" value is within the global scope since it used within an arrow function. 
+
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//  Arrow functions retain the 'this' value of the enclosing functional scope. You must avoid using an arrow function in a constructor where you need the contextual 'this' to be the object you are building. Which in the case above is Joe. 
